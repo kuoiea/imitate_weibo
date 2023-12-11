@@ -6,7 +6,7 @@ use jsonwebtoken::{encode, decode, Header, Validation, errors::{Result}, Encodin
 pub fn create_token(user_id: u64, user_name: String) -> Result<String> {
     let config = GLOBAL_CONFIG.lock().unwrap().clone().unwrap();
 
-    let secret_key = EncodingKey::from_secret(config.jwt_config.jwt_secret.as_bytes());
+    let secret_key = EncodingKey::from_secret(config.jwt_config.secret.as_bytes());
 
     // 创建一个自定义结构体 Claims，包含需要的声明（claims）
     // JWT Token 的有效期被设置为 1 小时。
@@ -27,7 +27,7 @@ pub fn create_token(user_id: u64, user_name: String) -> Result<String> {
 pub fn decode_token(jwt_token: String) {
     let config = GLOBAL_CONFIG.lock().unwrap().clone().unwrap();
 
-    let secret_key = DecodingKey::from_secret(config.jwt_config.jwt_secret.as_bytes());
+    let secret_key = DecodingKey::from_secret(config.jwt_config.secret.as_bytes());
     let decoded = decode::<Claims>(&jwt_token, &secret_key, &Validation::default());
     match decoded {
         Ok(_token_data) => {

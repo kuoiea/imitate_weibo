@@ -10,8 +10,8 @@
   },
   "redis": {
     "host": "127.0.0.1",
-    "port": "6739",
-    "password": "123456",
+    "port": "6379",
+    "password": "",
     "db": "0"
   },
   "jwt_config": {

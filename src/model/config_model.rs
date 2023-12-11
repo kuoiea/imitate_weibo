@@ -25,7 +25,7 @@ pub struct RedisConfigStruct {
 
 #[derive(Clone, Serialize, Deserialize,Debug)]
 pub struct JwtConfigStruct {
-    pub jwt_secret: Box<str>,
+    pub secret: Box<str>,
     pub expiration: u64,
 }
 

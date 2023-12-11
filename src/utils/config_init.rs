@@ -52,12 +52,15 @@ async fn init_redis() -> RedisResult<()> {
 
     let redis_url = format!("redis://{}:{}/", config.redis.host, config.redis.port);
     let client = Client::open(redis_url)?;
+
     let mut con = client.get_connection()?;
     // 对连接进行认证
-    redis::cmd("AUTH")
-        .arg(format!("{}", config.redis.password))
-        .query(&mut con)?;
-
+    // if config.redis.password.is_empty() {
+    //     redis::cmd("AUTH")
+    //         .arg(format!("{}", config.redis.password))
+    //         .query(&mut con)?;
+    //
+    // }
     *GLOBAL_REDIS.lock().unwrap() = Some(client);
     Ok(())
 }
