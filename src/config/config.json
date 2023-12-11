@@ -1,0 +1,22 @@
+{
+  "database": {
+    "default": {
+      "username": "root",
+      "password": "123456",
+      "host": "127.0.0.1",
+      "port": "3306",
+      "database_name": "imitate_weibo"
+    }
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": "6739",
+    "password": "123456",
+    "db": "0"
+  },
+  "jwt_config": {
+    "secret": "71d9baf79b2e69a4d212c9950ffce62577501a53",
+    "expiration": 3,
+    "expiration_comment": "有效期单位为小时"
+  }
+}
